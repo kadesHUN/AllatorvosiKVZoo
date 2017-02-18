@@ -1,3 +1,4 @@
+"use strict";
 
 	 //Eljárás tetszőleges mélységű rendezés megvalósítására
 //@jsonData - JSON-ben a rendezendő kávék

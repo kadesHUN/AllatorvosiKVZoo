@@ -15,7 +15,8 @@ function createBasketTable(){
     var counter=1;
     var temp={};
     var total=0;
-    var tableStyle={brand:'Márka', sale_price:'Fogyasztói ár' , piece:'Darab' , sub_total:'Részösszesen'}
+    var tableStyle={brand:'Márka', sale_price:'Fogyasztói ár' , piece:'Darab' , sub_total:'Részösszesen'};
+    basketSorted=basketSorted.map(function(currentItem){return currentItem;});
     basketSorted.push({brand:''});
     for (var i=0 ; i<basketSorted.length-1; i++ ){
         if (basketSorted[i]['brand']==basketSorted[i+1]['brand']) {
