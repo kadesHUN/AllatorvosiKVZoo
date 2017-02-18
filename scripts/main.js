@@ -1,9 +1,11 @@
 "use strict";
 
-	 //Eljárás tetszőleges mélységű rendezés megvalósítására
+//Eljárás tetszőleges mélységű rendezés megvalósítására
 //@jsonData - JSON-ben a rendezendő kávék
 //@sortByArray - rendezési szempontok tömbbe rendezve a tömb elemeinek egyezniük kell a kapott
 //               jsonData kulcsaival
+
+
 
 function generalOrder(jsonData,sortByArray) {
     //console.log(sortByArray);
@@ -37,18 +39,57 @@ function generalOrder(jsonData,sortByArray) {
 // @isGrouped - Boolean -  a jsonHeader-ben kapott első elem alapján csoportba rendezi a táblázatot. Előfeltétel, hogy a 
 //                         táblázat erre a paraméterre rendezett legyen 
 
+
+
 function showCoffeTable(jsonData,jsonHeader,divID,isGrouped){
+
+	function withoutGroup(){
+		for (var i=0 ; i<jsonData.length ; i++){
+			row=tableBody.insertRow();
+			for (var j=0; j<jsonHeaderKeys.length ; j++) {
+				item=row.insertCell();
+				item.innerHTML=jsonData[i][jsonHeaderKeys[j]];
+			}
+		}
+	}
+
+
+	function withGroup (){
+		var firstHeadField;
+		var	temp={};
+		firstHeadField=document.querySelector('#div1 table thead tr td');
+		firstHeadField.remove();
+		for (var i=0 ; i<jsonHeaderKeys.length ; i++) {
+			temp[jsonHeaderKeys[i]]='';
+		}
+		jsonData.unshift(temp);
+		for (i=1 ; i<jsonData.length ; i++) {
+			row=tableBody.insertRow();
+			if (jsonData[i][jsonHeaderKeys[0]]!=jsonData[i-1][jsonHeaderKeys[0]]) {
+				item=row.insertCell();
+				item.innerHTML=jsonData[i][jsonHeaderKeys[0]];
+				item.colSpan=jsonHeaderKeys.length-1;
+				row=tableBody.insertRow();
+			} 
+			for (var j=1; j<jsonHeaderKeys.length ; j++) {
+				item=row.insertCell();
+				item.innerHTML=jsonData[i][jsonHeaderKeys[j]];				
+			}
+		}
+	}
 
 	var tableHead='';
     var tableBody=''
 	var row='';
 	var item='';
 	var jsonHeaderKeys=[];
+	jsonData=jsonData.map(function(currentItem){return currentItem;});
     
     tableHead=document.querySelector('#'+divID+' table thead');
     tableBody=document.querySelector('#'+divID+' table tbody');
     tableHead.innerHTML='';
     tableBody.innerHTML='';
+	jsonHeaderKeys=Object.keys(jsonHeader);
 
     //THEAD elkészítése 
     row=tableHead.insertRow();
@@ -56,16 +97,14 @@ function showCoffeTable(jsonData,jsonHeader,divID,isGrouped){
         item=row.insertCell();
         item.innerHTML=jsonHeader[i];
     }
-	
-    //TBODY elkészítése
-    jsonHeaderKeys=Object.keys(jsonHeader);
-	for (var i=0 ; i<jsonData.length ; i++){
-		row=tableBody.insertRow();
-		for (var j=0; j<jsonHeaderKeys.length ; j++) {
-			item=row.insertCell();
-			item.innerHTML=jsonData[i][jsonHeaderKeys[j]];
-		}
+	if (isGrouped) {
+		withGroup();
+	} else {
+		withoutGroup();
 	}
+    //TBODY elkészítése
+    
+
 }
 
 
@@ -104,15 +143,29 @@ var coffee=[{brand:"Alfredo" , country:"Ukrajna" , strong:2, stock:6, purcase_pr
 var adminLogedIn=false;
 var actualDiv='';
 var basket=[];
-var tableStyle1={brand:'Márka', country:'Származási ország' , strong:'Erőssége' , stock:'Készlet'};
+var tableStyle1={brand:'Márka' , country:'Származási ország' , strong:'Erőssége' , stock:'Készlet'};
+var tableStyle2={country:'Származási ország' , brand:'Márka' , strong:'Erőssége' , stock:'Készlet'};
 
 var order1=['country','brand'];
 var order2=['brand'];
 
+var searchWindow=['Mutass minden elemet','Emeld ki az újakat','Csak az újakat mutasd'];
+var nextSearchWindowPointer=1;
 // ----------------------------------------------------------------------------------------------------------------------
 // Induláskor lefutó 
 
+// div0 generálás
 coffee=generalOrder(coffee,order1);
 showCoffeTable(coffee,tableStyle1,'div0',false);
 addBasketsToTable('div0');
 addEventLstnrToBaskets('div0');
+
+//div1 generálás
+
+// showCoffeTable(coffee,tableStyle2,'div1',true);
+//addCalassToGroupedTable();
+//addNewAttribByData('2017.01.01',0);
+//highlightNew();
+//hideOld();
+//hideUnnecessaryCountry();
+newsDivGenerator();

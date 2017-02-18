@@ -39,10 +39,13 @@ function createBasketTable(){
   document.getElementById('total').innerHTML=total;
 }
 
+
 function showBasket() {
 	showBasketContainer(true);
     createBasketTable();
 }
+
+
 
 function showBasketContainer(show){
 	var displayValue;
@@ -50,6 +53,8 @@ function showBasketContainer(show){
 	document.getElementById('basketContainer').style.display=displayValue;
 	document.getElementById('basketBackground').style.display=displayValue;
 }
+
+// A bevásárlókosár melletti számláló frissítése
 
 function updateBasketIcon(){
 	var basketCounter=document.getElementById('basketCounter');
@@ -62,7 +67,7 @@ function updateBasketIcon(){
 function addBasketsToTable (divID) {
 	var rowHead =document.querySelector('#'+divID+' table thead tr');
 	var rowsBody=document.querySelectorAll('#'+divID+' table tbody tr');
-	var insertThis='<i class="material-icons md-18">shopping_cart</i>';
+	var insertThis='<i class="material-icons md-18 pointer">shopping_cart</i>';
 	var cell=rowHead.insertCell();
 	cell.innerHTML='';
 	for (var i=0; i<rowsBody.length ; i++) {

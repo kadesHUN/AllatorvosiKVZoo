@@ -28,23 +28,31 @@
     <div id="basketContainer">
         <table>
             <thead></thead>
-            <tbody><tbody>  
+            <tbody></tbody>  
                    
         </table>
         <p>Összesen : <span id="total"><span></p>
+        <input type="button" value="rendelés" onclick="alert('Rendelését fogadtuk');">
     </div>
+
     <div id="div0" class="article">
         <table>
             <thead></thead>
-            <tbody><tbody>
+            <tbody></tbody>
         </table>     
     </div>
+
     <div id="div1" class="article">
+        <label>Csoportosítás országok szerint
+            <input onChange="newsDivGenerator()" id="groupByCountry" type="checkbox" checked>
+        </label>
+        <div id="newsNext" onClick="newsNextHandler()"></div>
         <table>
             <thead></thead>
-            <tbody><tbody>
+            <tbody></tbody>
         </table>     
     </div>
+    
     <div id="div2" class="article">
         <table>
             <thead></thead>
@@ -58,6 +66,7 @@
         </table>     
     </div>
     
+    <script type="text/javascript" src="scripts/search.js"></script>
     <script type="text/javascript" src="scripts/basket.js"></script>
 	<script type="text/javascript" src="scripts/main.js"></script>
    
