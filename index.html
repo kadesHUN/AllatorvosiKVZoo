@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Állatorvosi KvZoo</title>
+		<meta charset="utf-8">
+		<meta name="author" content="Kovács Attila">
+        <link rel="stylesheet" type="text/css" href="designs/main.css">
+        <link rel="stylesheet" type="text/css" href="designs/google.css">
+	</head> 
+<body>
+    <header>
+        <div class='title'>Állatorvosi KvZoo</div>
+        <div class='basket' onclick="showBasket();"><i class="material-icons md-36">shopping_cart</i><span id="basketCounter">0</span></div>
+        <div class='user'><i class="material-icons md-36">person</i></div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#">KV lista</a></li>
+            <li><a href="#">Keresés</a></li>
+            <li><a href="#">Rendelés</a></li>
+            <li><a href="#">Indokolatlan</a></li>
+            <li><a href="#">Beállítások</a></li>
+            <li><a href="#">Statisztika</a></li>
+        </ul>
+    </nav>
+    <div id="basketBackground" onclick="showBasketContainer(false);"></div>
+    <div id="basketContainer">
+        <table>
+            <thead></thead>
+            <tbody><tbody>  
+                   
+        </table>
+        <p>Összesen : <span id="total"><span></p>
+    </div>
+    <div id="div0" class="article">
+        <table>
+            <thead></thead>
+            <tbody><tbody>
+        </table>     
+    </div>
+    <div id="div1" class="article">
+        <table>
+            <thead></thead>
+            <tbody><tbody>
+        </table>     
+    </div>
+    <div id="div2" class="article">
+        <table>
+            <thead></thead>
+            <tbody><tbody>
+        </table>     
+    </div>
+    <div id="div3" class="article">
+        <table>
+            <thead></thead>
+            <tbody><tbody>
+        </table>     
+    </div>
+    
+    <script type="text/javascript" src="scripts/basket.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
+   
+	</body>
+</html>
