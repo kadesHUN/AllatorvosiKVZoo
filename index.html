@@ -12,6 +12,17 @@
         <div class='title'>Állatorvosi KvZoo</div>
         <div class='basket' onclick="showBasket();"><i class="material-icons md-36">shopping_cart</i><span id="basketCounter">0</span></div>
         <div class='user'><i class="material-icons md-36">person</i></div>
+        <div class="counter">
+            <span class="counterBig" id="days">1</span>
+            <span class="counterSmall">nap</span>
+            <span class="counterBig" id="hours">2</span>
+            <span class="counterSmall">óra</span>
+            <span class="counterBig" id="mins">3</span>
+            <span class="counterSmall">perc</span>
+            <span class="counterBig" id="secs">4</span>
+            <span class="counterSmall">mp</span>
+        </div>
+
     </header>
     
     <nav>
@@ -43,10 +54,12 @@
     </div>
 
     <div id="div1" class="article">
-        <label>Csoportosítás országok szerint
-            <input onChange="newsDivGenerator()" id="groupByCountry" type="checkbox" checked>
-        </label>
-        <div id="newsNext" onClick="newsNextHandler()"></div>
+        <div>
+            <label class="pointer" id="grouping">Csoportosítás országok szerint
+                <input onChange="newsDivGenerator()" id="groupByCountry" type="checkbox" checked>
+            </label>
+            <div class="pointer" id="newsNext" onClick="newsNextHandler()"></div>
+        </div>
         <table>
             <thead></thead>
             <tbody></tbody>
@@ -60,12 +73,14 @@
         </table>     
     </div>
     <div id="div3" class="article">
-        <table>
-            <thead></thead>
-            <tbody><tbody>
-        </table>     
+        <h1>Felügyeleti beállítások</h1>
+
+        <label>Az új bolt nyitásának dátuma
+            <input id="newOpenDate" type="datetime-local" name="openDay" value='2017-03-15T10:00:00'> <input type="button" value="Beállít" onClick="setCounter()">
+
+        </label>    
     </div>
-    
+    <script type="text/javascript" src="scripts/admin.js"></script>
     <script type="text/javascript" src="scripts/search.js"></script>
     <script type="text/javascript" src="scripts/basket.js"></script>
 	<script type="text/javascript" src="scripts/main.js"></script>

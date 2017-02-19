@@ -53,7 +53,6 @@ function showCoffeTable(jsonData,jsonHeader,divID,isGrouped){
 		}
 	}
 
-
 	function withGroup (){
 		var firstHeadField;
 		var	temp={};
@@ -151,6 +150,11 @@ var order2=['brand'];
 
 var searchWindow=['Mutass minden elemet','Emeld ki az újakat','Csak az újakat mutasd'];
 var nextSearchWindowPointer=1;
+
+var newOpenInputBox='2017-02-21T10:00:00';
+var newOpen;
+newOpen = parseYMDHM(newOpenInputBox);
+
 // ----------------------------------------------------------------------------------------------------------------------
 // Induláskor lefutó 
 
@@ -168,4 +172,9 @@ addEventLstnrToBaskets('div0');
 //highlightNew();
 //hideOld();
 //hideUnnecessaryCountry();
+
 newsDivGenerator();
+
+dateCounter(newOpen);
+var myVar = setInterval(myTimer, 1000);
+myTimer();
