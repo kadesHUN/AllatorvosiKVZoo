@@ -153,6 +153,13 @@ var nextSearchWindowPointer=1;
 
 var newOpenInputBox='2017-02-21T10:00:00';
 var newOpen;
+
+var myVar = setInterval(myTimer, 1000);
+
+var myTimerInterval;
+
+var myVideo = document.querySelector("video");
+
 newOpen = parseYMDHM(newOpenInputBox);
 
 // ----------------------------------------------------------------------------------------------------------------------
@@ -176,5 +183,6 @@ addEventLstnrToBaskets('div0');
 newsDivGenerator();
 
 dateCounter(newOpen);
-var myVar = setInterval(myTimer, 1000);
 myTimer();
+
+ 
