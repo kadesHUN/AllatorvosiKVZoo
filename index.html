@@ -11,8 +11,8 @@
 <body>
     <header>
         <div class='title'>Állatorvosi KvZoo</div>
-        <div class='basket' onclick="showBasket();"><i class="material-icons md-36">shopping_cart</i><span id="basketCounter">0</span></div>
-        <div class='user'><i id="loggedInIco" class="material-icons md-36">person</i></div>
+        <div class='basket pointer' onclick="showBasket();"><i class="material-icons md-36">shopping_cart</i><span id="basketCounter">0</span></div>
+        <div class='user pointer' onClick="showLoginWindow(true);"><i id="loggedInIco" class="material-icons md-36">person</i></div>
         <div class="counter">
             <span class="counterBig" id="days">1</span>
             <span class="counterSmall">nap</span>
@@ -27,27 +27,25 @@
     </header>
     
     <nav>
-        <ul>
-            <li><a href="#">KV lista</a></li>
-            <li><a href="#">Keresés</a></li>
-            <li><a href="#">Rendelés</a></li>
-            <li><a href="#">Indokolatlan</a></li>
-            <li><a href="#">Beállítások</a></li>
-            <li><a href="#">Statisztika</a></li>
+        <ul onClick="menuClick();">
+            <li>Rendelés</li>
+            <li>Rendszerezés</li>
+            <li>Indokolatlan</li>
         </ul>
     </nav>
-    <div id="basketBackground" onclick="showBasketContainer(false);"></div>
-    <div id="basketContainer">
-        <table>
-            <thead></thead>
-            <tbody></tbody>  
-                   
-        </table>
-        <p>Összesen : <span id="total"><span></p>
-        <input type="button" value="rendelés" onclick="alert('Rendelését fogadtuk');">
+    <div class="basketBackground" id="basketBackground" onclick="showBasketContainer(false);"></div>
+    <div class="basketContainer" id="basketContainer">
+        <div id="orderContainer">
+            <table class="table100">
+                <thead></thead>
+                <tbody></tbody>               
+            </table>
+            <p class="orderTotal">Összesen : <span id="total"><span></p>
+            <div class="newsNext pointer" onclick="order()">Megrendelem </div>
+        </div>
     </div>
 
-    <div id="div0" class="article">
+    <div id="div0" class="article displayOn">
         <table>
             <thead></thead>
             <tbody></tbody>
@@ -56,10 +54,10 @@
 
     <div id="div1" class="article">
         <div>
-            <label class="pointer" id="grouping">Csoportosítás országok szerint
+            <label class="pointer admLabel" id="grouping">Csoportosítás országok szerint
                 <input onChange="newsDivGenerator()" id="groupByCountry" type="checkbox" checked>
             </label>
-            <div class="pointer" id="newsNext" onClick="newsNextHandler()"></div>
+            <div class="newsNext pointer" id="newsNext" onClick="newsNextHandler()"></div>
         </div>
         <table>
             <thead></thead>
@@ -83,11 +81,11 @@
     <div id="div3" class="article">
         <h1>Felügyeleti beállítások</h1>
 
-        <label>Az új bolt nyitásának dátuma
+        <label class="admLabel">Az új bolt nyitásának dátuma
             <input id="newOpenDate" type="datetime-local" name="openDay" value='2017-03-15T10:00:00'> <input type="button" value="Beállít" onClick="setCounter()">
-        </label> 
+        </label > 
         <h1>Készletgazdálkodás - Minimum készlet és az alatti termékek</h1>
-        <label>Minimum készlet:
+        <label class="admLabel">Minimum készlet:
             <input id="minStock" type="input" value="3"> <input onCLick="minStockFilter()" type="button" value="Szűrés">
         </label>  
         <table>
@@ -96,6 +94,7 @@
         </table>     
     </div>
     <div>
+       <div class="loginBackground" id="loginBackground" onclick="showLoginWindow(false);"></div>
         <div class="loginContainer">
             <h1 class="lHeader">LogIN</h1>
             <label class="lText">Username</label>
@@ -105,6 +104,7 @@
             <input onClick="login()" type='button' value='Login'>
         </div>
     </div>
+    <script type="text/javascript" src="scripts/menu.js"></script>
     <script type="text/javascript" src="scripts/video.js"></script>
     <script type="text/javascript" src="scripts/admin.js"></script>
     <script type="text/javascript" src="scripts/search.js"></script>

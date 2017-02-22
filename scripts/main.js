@@ -165,26 +165,17 @@ newOpen = parseYMDHM(newOpenInputBox);
 
 var loggedIn=false;
 
+var actPage=0;
+var previousPage=0;
+
 // ----------------------------------------------------------------------------------------------------------------------
 // Induláskor lefutó 
 
-// div0 generálás
 coffee=generalOrder(coffee,order1);
 showCoffeTable(coffee,tableStyle1,'div0',false);
 addBasketsToTable('div0');
 addEventLstnrToBaskets('div0');
-
-//div1 generálás
-
-// showCoffeTable(coffee,tableStyle2,'div1',true);
-//addCalassToGroupedTable();
-//addNewAttribByData('2017.01.01',0);
-//highlightNew();
-//hideOld();
-//hideUnnecessaryCountry();
-
 newsDivGenerator();
-
 dateCounter(newOpen);
 myTimer();
 

@@ -9,6 +9,10 @@ function priceOfCoffee (name){
     return -1;
 }
 
+
+// A rendeklések tábla összeállítása
+// Amennyiben egy termék többször is szerepel azok összesítve jelennek meg
+
 function createBasketTable(){
     var basketSorted=generalOrder(basket,order2);
     var basketGrouped=[];
@@ -36,9 +40,11 @@ function createBasketTable(){
         }     
     }
   showCoffeTable(basketGrouped,tableStyle,'basketContainer',false);  
-  document.getElementById('total').innerHTML=total;
+  document.getElementById('total').innerHTML=total+' Ft';
 }
 
+
+// A rendelések megjelenítése
 
 function showBasket() {
 	showBasketContainer(true);
@@ -46,6 +52,7 @@ function showBasket() {
 }
 
 
+//A rendeléseket tartalnazó div megjelenítése
 
 function showBasketContainer(show){
 	var displayValue;
@@ -91,4 +98,13 @@ function addEventLstnrToBaskets (divID) {
 				updateBasketIcon();
 			});
 	}
+}
+
+//A rendelés gomb megnyomása után a tábla ürítése és a felhasználó értesítése
+
+function order() {
+    basket=[];
+    alert('Megrendelését fogadtuk');
+    showBasketContainer(false);
+    updateBasketIcon();
 }

@@ -24,6 +24,8 @@ function dateCounter(startDate){
     return result;
 }
 
+// Számláló megjelenítése
+
 function myTimer() {
     var myCounter;
     var counterArray=[];
@@ -35,7 +37,7 @@ function myTimer() {
 
 }
 
-//
+// Vissaszámlló beállítása
 
 function setCounter() {
     var counterInput;
@@ -52,13 +54,25 @@ function setCounter() {
 function login() {
     var userName;
     var userPassword;
+    var node;
+    var textnode;
+
     userName=event.target.parentElement.children[2].value;
     userPassword=event.target.parentElement.children[4].value;
+    node = document.createElement("li");
+    textnode = document.createTextNode("Adminisztráció");
+
     if (userName=='admin' && userPassword=='admin'){
         loggedIn=true;
-        //admin ablak megjelenítése
         document.getElementById('loggedInIco').innerHTML='person_outline';
-    }
+        node.appendChild(textnode);
+        document.querySelector('ul').appendChild(node);
+        document.querySelector('.loginContainer').style.display='none';
+        document.querySelector('.loginBackground').style.display='none';
+
+    } else {
+        alert('Hibás felhasználónév vagy jelszó!');
+    }   
 }
 
 
@@ -81,11 +95,6 @@ function generalArraySort (jsonData,sortByArray) {
                     return -1;
             }
         } 
-       /* if (first.stock<second.stock){
-            return -1;
-        } else {
-            return 1;
-        } */
     });
     
     return result;
@@ -95,7 +104,7 @@ function minStockFilter() {
     var coffeeStockFiltered;
     var filterValue;
     var order;
-    order = ['stock','strong','brand'];
+    order = ['stock','brand'];
     filterValue=document.getElementById('minStock').value;
     coffeeStockFiltered=coffee.filter(function (arrayItem){
         if (arrayItem.stock<=filterValue) {
@@ -106,3 +115,14 @@ function minStockFilter() {
     showCoffeTable(coffeeStockFiltered,tableStyle3,'div3',false);
 }
 
+
+
+function showLoginWindow(param) {
+    if (!loggedIn && param) {
+        document.querySelector('.loginContainer').style.display='block';
+        document.querySelector('.loginBackground').style.display='block';
+    } else {
+        document.querySelector('.loginContainer').style.display='none';
+        document.querySelector('.loginBackground').style.display='none';        
+    }
+}
