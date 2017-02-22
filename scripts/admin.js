@@ -35,8 +35,74 @@ function myTimer() {
 
 }
 
+//
+
 function setCounter() {
     var counterInput;
     counterInput=document.getElementById("newOpenDate").value;
     newOpen=parseYMDHM(counterInput);
 }
+
+// bejelentkezési adatok ellenőrzése
+// - login ablak törlése
+// - ikon bejelentkezettre állítása
+// - menüpont hozzáadása az oldalsó menühöz
+// - admin oldal megjelenítése
+
+function login() {
+    var userName;
+    var userPassword;
+    userName=event.target.parentElement.children[2].value;
+    userPassword=event.target.parentElement.children[4].value;
+    if (userName=='admin' && userPassword=='admin'){
+        loggedIn=true;
+        //admin ablak megjelenítése
+        document.getElementById('loggedInIco').innerHTML='person_outline';
+    }
+}
+
+
+//Eljárás tetszőleges mélységű rendezés megvalósítására a JS array.sort funkciójának használatával
+//a függvény vissztérési értéka a rendezett tömb
+//@jsonData - JSON-ben a rendezendő kávék
+//@sortByArray - rendezési szempontok tömbbe rendezve a tömb elemeinek egyezniük kell a kapott
+//               jsonData kulcsaival
+
+function generalArraySort (jsonData,sortByArray) {
+    var result;
+    result=jsonData.sort(function(first, second){
+        for (var i=0; i<sortByArray.length ; i++){
+            first[sortByArray[i]]=first[sortByArray[i]].toString();
+            second[sortByArray[i]]=second[sortByArray[i]].toString();
+            switch (first[sortByArray[i]].localeCompare(second[sortByArray[i]])) {
+                case 1 : 
+                    return 1;
+                case -1  :
+                    return -1;
+            }
+        } 
+       /* if (first.stock<second.stock){
+            return -1;
+        } else {
+            return 1;
+        } */
+    });
+    
+    return result;
+}
+
+function minStockFilter() {
+    var coffeeStockFiltered;
+    var filterValue;
+    var order;
+    order = ['stock','strong','brand'];
+    filterValue=document.getElementById('minStock').value;
+    coffeeStockFiltered=coffee.filter(function (arrayItem){
+        if (arrayItem.stock<=filterValue) {
+            return true;
+        }
+    });
+    coffeeStockFiltered=generalArraySort(coffeeStockFiltered,order);
+    showCoffeTable(coffeeStockFiltered,tableStyle3,'div3',false);
+}
+

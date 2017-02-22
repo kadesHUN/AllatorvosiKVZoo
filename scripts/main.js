@@ -144,6 +144,7 @@ var actualDiv='';
 var basket=[];
 var tableStyle1={brand:'Márka' , country:'Származási ország' , strong:'Erőssége' , stock:'Készlet'};
 var tableStyle2={country:'Származási ország' , brand:'Márka' , strong:'Erőssége' , stock:'Készlet'};
+var tableStyle3={stock:'Készlet' , brand:'Márka' , country:'Származási ország' , strong:'Erőssége'};
 
 var order1=['country','brand'];
 var order2=['brand'];
@@ -151,7 +152,7 @@ var order2=['brand'];
 var searchWindow=['Mutass minden elemet','Emeld ki az újakat','Csak az újakat mutasd'];
 var nextSearchWindowPointer=1;
 
-var newOpenInputBox='2017-02-21T10:00:00';
+var newOpenInputBox='2017-05-151T10:00:00';
 var newOpen;
 
 var myVar = setInterval(myTimer, 1000);
@@ -161,6 +162,8 @@ var myTimerInterval;
 var myVideo = document.querySelector("video");
 
 newOpen = parseYMDHM(newOpenInputBox);
+
+var loggedIn=false;
 
 // ----------------------------------------------------------------------------------------------------------------------
 // Induláskor lefutó 

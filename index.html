@@ -12,7 +12,7 @@
     <header>
         <div class='title'>Állatorvosi KvZoo</div>
         <div class='basket' onclick="showBasket();"><i class="material-icons md-36">shopping_cart</i><span id="basketCounter">0</span></div>
-        <div class='user'><i class="material-icons md-36">person</i></div>
+        <div class='user'><i id="loggedInIco" class="material-icons md-36">person</i></div>
         <div class="counter">
             <span class="counterBig" id="days">1</span>
             <span class="counterSmall">nap</span>
@@ -79,13 +79,21 @@
                 <i id="play_volume" class="material-icons pointer" onclick="playVolume()">volume_off</i>
             </div>
         </div>
+    </div>
     <div id="div3" class="article">
         <h1>Felügyeleti beállítások</h1>
 
         <label>Az új bolt nyitásának dátuma
             <input id="newOpenDate" type="datetime-local" name="openDay" value='2017-03-15T10:00:00'> <input type="button" value="Beállít" onClick="setCounter()">
-
-        </label>    
+        </label> 
+        <h1>Készletgazdálkodás - Minimum készlet és az alatti termékek</h1>
+        <label>Minimum készlet:
+            <input id="minStock" type="input" value="3"> <input onCLick="minStockFilter()" type="button" value="Szűrés">
+        </label>  
+        <table>
+            <thead></thead>
+            <tbody></tbody>
+        </table>     
     </div>
     <div>
         <div class="loginContainer">
@@ -94,7 +102,7 @@
             <input class="inputBox" type="text" placeholder="admin">
             <label class="lText">Password</label>
             <input class="inputBox" type="password" placeholder="admin">
-            <input type='button' value='Login'>
+            <input onClick="login()" type='button' value='Login'>
         </div>
     </div>
     <script type="text/javascript" src="scripts/video.js"></script>
